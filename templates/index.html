@@ -9,7 +9,7 @@
 <body>
 
     <header>
-        <h1>:money_with_wings: Mis Gastos</h1>
+        <h1> 💸 Mis Gastos</h1>
         <p>Registrá y controlá tus gastos fácilmente</p>
     </header>
 
@@ -57,7 +57,7 @@
             const mensaje = document.getElementById('mensaje');
 
             if (!descripcion || !monto) {
-                mensaje.textContent = ':warning: Completá ambos campos.';
+                mensaje.textContent = '⚠️ Completá ambos campos.';
                 mensaje.style.color = '#e74c3c';
                 return;
             }
@@ -69,4 +69,4 @@
             });
 
             const data = await response.json();
-            mensaje.textContent = ':white_check_mark: ' + data.mensaje;
+            mensaje.textContent = '✅ ' + data.mensaje;
