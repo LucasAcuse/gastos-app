@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +10,7 @@
 <body>
 
     <header>
-        <h1> 💸 Mis Gastos</h1>
+        <h1>💸 Mis Gastos</h1>
         <p>Registrá y controlá tus gastos fácilmente</p>
     </header>
 
@@ -70,3 +71,39 @@
 
             const data = await response.json();
             mensaje.textContent = '✅ ' + data.mensaje;
+            mensaje.style.color = '#27ae60';
+
+            document.getElementById('descripcion').value = '';
+            document.getElementById('monto').value = '';
+
+            verGastos();
+        }
+
+        async function verGastos() {
+            const response = await fetch('/gastos');
+            const data = await response.json();
+
+            const tbody = document.getElementById('cuerpo-tabla');
+            const totalDiv = document.getElementById('total');
+
+            if (data.gastos.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="2" class="vacio">Todavía no hay gastos cargados.</td></tr>';
+                totalDiv.textContent = '';
+                return;
+            }
+
+            tbody.innerHTML = data.gastos.map(g => `
+                <tr>
+                    <td>${g.descripcion}</td>
+                    <td>$${g.monto.toFixed(2)}</td>
+                </tr>
+            `).join('');
+
+            totalDiv.textContent = `Total: $${data.total.toFixed(2)}`;
+        }
+
+        verGastos();
+    </script>
+
+</body>
+</html>
