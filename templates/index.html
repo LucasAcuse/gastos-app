@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Gastos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>:money_with_wings: Mis Gastos</h1>
+        <p>Registrá y controlá tus gastos fácilmente</p>
+    </header>
+
+    <main>
+
+        <section class="formulario">
+            <h2>Agregar gasto</h2>
+            <div class="campos">
+                <input type="text" id="descripcion" placeholder="Descripción (ej: Café)" />
+                <input type="number" id="monto" placeholder="Monto (ej: 350)" />
+                <button onclick="agregarGasto()">Agregar</button>
+            </div>
+            <p id="mensaje"></p>
+        </section>
+
+        <section class="lista">
+            <div class="lista-header">
+                <h2>Lista de gastos</h2>
+                <button class="btn-ver" onclick="verGastos()">Actualizar</button>
+            </div>
+
+            <table id="tabla-gastos">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Monto</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla">
+                    <tr>
+                        <td colspan="2" class="vacio">Todavía no hay gastos cargados.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="total" id="total"></div>
+        </section>
+
+    </main>
+
+    <script>
+        async function agregarGasto() {
+            const descripcion = document.getElementById('descripcion').value;
+            const monto = document.getElementById('monto').value;
+            const mensaje = document.getElementById('mensaje');
+
+            if (!descripcion || !monto) {
+                mensaje.textContent = ':warning: Completá ambos campos.';
+                mensaje.style.color = '#e74c3c';
+                return;
+            }
+
+            const response = await fetch('/gastos', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ descripcion, monto: parseFloat(monto) })
+            });
+
+            const data = await response.json();
+            mensaje.textContent = ':white_check_mark: ' + data.mensaje;
