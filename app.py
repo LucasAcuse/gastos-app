@@ -2,6 +2,9 @@ from flask import Flask, request, jsonify, render_template  # 1. imports
 
 app = Flask(__name__)  # 2. crear app
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
 gastos = []  # 3. variables
 
 # 4. funciones
