@@ -33,7 +33,7 @@ header p {
 }
 
 main {
-    max-width: 640px;
+    max-width: 700px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -62,7 +62,7 @@ section h2 {
     flex-wrap: wrap;
 }
 
-input {
+input, select {
     flex: 1;
     min-width: 130px;
     padding: 0.7rem 1rem;
@@ -73,9 +73,10 @@ input {
     color: #1a1a2e;
     transition: border-color 0.2s;
     outline: none;
+    background: white;
 }
 
-input:focus {
+input:focus, select:focus {
     border-color: #4f46e5;
 }
 
@@ -133,6 +134,18 @@ button:active {
     background-color: #e5e7eb;
 }
 
+.btn-borrar {
+    padding: 0.3rem 0.6rem;
+    background-color: #fee2e2;
+    color: #ef4444;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.btn-borrar:hover {
+    background-color: #fecaca;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -156,10 +169,10 @@ th {
 td {
     padding: 0.75rem 0.5rem;
     border-bottom: 1px solid #f3f4f6;
-    font-family: 'DM Mono', monospace;
 }
 
-td:last-child {
+td:nth-child(3) {
+    font-family: 'DM Mono', monospace;
     color: #4f46e5;
     font-weight: 600;
 }
@@ -181,15 +194,7 @@ td:last-child {
 }
 
 @media (max-width: 480px) {
-    header h1 {
-        font-size: 1.8rem;
-    }
-
-    .campos {
-        flex-direction: column;
-    }
-
-    button {
-        width: 100%;
-    }
+    header h1 { font-size: 1.8rem; }
+    .campos { flex-direction: column; }
+    button { width: 100%; }
 }
