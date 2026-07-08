@@ -88,7 +88,7 @@
 
             if (!descripcion || !monto) {
                 mensaje.textContent = '⚠️ Completá ambos campos.';
-                mensaje.style.color = '#e74c3c';
+                mensaje.style.color = '#f87171';
                 return;
             }
 
@@ -100,7 +100,7 @@
 
             const data = await response.json();
             mensaje.textContent = '✅ ' + data.mensaje;
-            mensaje.style.color = '#27ae60';
+            mensaje.style.color = '#34d399';
 
             document.getElementById('descripcion').value = '';
             document.getElementById('monto').value = '';
@@ -132,7 +132,7 @@
             tbody.innerHTML = data.gastos.map(g => `
                 <tr>
                     <td>${g.descripcion}</td>
-                    <td>${g.categoria}</td>
+                    <td><span class="categoria-badge">${g.categoria}</span></td>
                     <td>$${g.monto.toFixed(2)}</td>
                     <td><button class="btn-borrar" onclick="borrarGasto(${g.id})">🗑️</button></td>
                 </tr>
