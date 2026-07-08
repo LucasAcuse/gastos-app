@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -7,33 +9,38 @@
 }
 
 body {
-    font-family: 'DM Sans', sans-serif;
-    background-color: #f0f4f8;
-    color: #1a1a2e;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     min-height: 100vh;
     padding: 2rem 1rem;
+    color: #e2e8f0;
 }
 
 header {
     text-align: center;
     margin-bottom: 2.5rem;
+    padding: 2rem;
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
     font-weight: 700;
+    background: linear-gradient(90deg, #60a5fa, #a78bfa, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     letter-spacing: -1px;
-    color: #1a1a2e;
+    margin-bottom: 0.5rem;
 }
 
 header p {
-    margin-top: 0.4rem;
-    color: #6b7280;
+    color: #94a3b8;
     font-size: 1rem;
 }
 
 main {
-    max-width: 700px;
+    max-width: 720px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -41,18 +48,25 @@ main {
 }
 
 section {
-    background: #ffffff;
-    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
     padding: 1.8rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s;
+}
+
+section:hover {
+    border-color: rgba(96, 165, 250, 0.3);
 }
 
 section h2 {
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 0.75rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #6b7280;
+    letter-spacing: 0.12em;
+    color: #60a5fa;
     margin-bottom: 1.2rem;
 }
 
@@ -65,40 +79,48 @@ section h2 {
 input, select {
     flex: 1;
     min-width: 130px;
-    padding: 0.7rem 1rem;
-    border: 2px solid #e5e7eb;
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: #1a1a2e;
-    transition: border-color 0.2s;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #e2e8f0;
     outline: none;
-    background: white;
+    transition: border-color 0.2s, background 0.2s;
 }
 
 input:focus, select:focus {
-    border-color: #4f46e5;
+    border-color: #60a5fa;
+    background: rgba(96, 165, 250, 0.08);
 }
 
 input::placeholder {
-    color: #9ca3af;
+    color: #475569;
+}
+
+select option {
+    background: #1e1b4b;
+    color: #e2e8f0;
 }
 
 button {
-    padding: 0.7rem 1.4rem;
-    background-color: #4f46e5;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
     color: white;
     border: none;
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
+    transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 button:hover {
-    background-color: #4338ca;
+    opacity: 0.9;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
 }
 
 button:active {
@@ -107,7 +129,7 @@ button:active {
 
 #mensaje {
     margin-top: 0.8rem;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     min-height: 1.2rem;
 }
 
@@ -124,77 +146,102 @@ button:active {
 
 .btn-ver {
     padding: 0.4rem 1rem;
-    font-size: 0.85rem;
-    background-color: #f3f4f6;
-    color: #4f46e5;
-    border-radius: 8px;
+    font-size: 0.82rem;
+    background: rgba(96, 165, 250, 0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    box-shadow: none;
 }
 
 .btn-ver:hover {
-    background-color: #e5e7eb;
+    background: rgba(96, 165, 250, 0.25);
+    box-shadow: none;
+    opacity: 1;
 }
 
 .btn-borrar {
-    padding: 0.3rem 0.6rem;
-    background-color: #fee2e2;
-    color: #ef4444;
+    padding: 0.35rem 0.7rem;
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
     border-radius: 8px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    box-shadow: none;
 }
 
 .btn-borrar:hover {
-    background-color: #fecaca;
+    background: rgba(239, 68, 68, 0.25);
+    box-shadow: none;
+    opacity: 1;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 thead tr {
-    border-bottom: 2px solid #f3f4f6;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 th {
     text-align: left;
-    padding: 0.6rem 0.5rem;
-    font-size: 0.8rem;
-    font-weight: 700;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #9ca3af;
+    letter-spacing: 0.08em;
+    color: #64748b;
 }
 
 td {
-    padding: 0.75rem 0.5rem;
-    border-bottom: 1px solid #f3f4f6;
+    padding: 0.85rem 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #cbd5e1;
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
 }
 
 td:nth-child(3) {
-    font-family: 'DM Mono', monospace;
-    color: #4f46e5;
     font-weight: 600;
+    color: #60a5fa;
+    font-variant-numeric: tabular-nums;
+}
+
+.categoria-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: rgba(139, 92, 246, 0.15);
+    color: #a78bfa;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 500;
 }
 
 .vacio {
     text-align: center;
-    color: #9ca3af;
-    font-family: 'DM Sans', sans-serif;
-    padding: 2rem 0;
+    color: #475569;
+    font-size: 0.9rem;
+    padding: 2.5rem 0;
 }
 
 .total {
-    margin-top: 1rem;
+    margin-top: 1.2rem;
     text-align: right;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    color: #1a1a2e;
-    font-family: 'DM Mono', monospace;
+    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 @media (max-width: 480px) {
-    header h1 { font-size: 1.8rem; }
+    header h1 { font-size: 2rem; }
     .campos { flex-direction: column; }
     button { width: 100%; }
 }
